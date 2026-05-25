@@ -11,15 +11,15 @@ print(df.head())        # Display the first 5 rows of the DataFrame to get an ov
 
 # Total spending
 total_spending = df["Amount"].sum()     # Calculate the total spending by summing the "Amount" column in the DataFrame
-print("\nTotal Spending: $", total_spending)
+print(f"\nTotal Spending: ${total_spending:.2f}")       # Print the total spending formatted to 2 decimal places for better readability 
 
 # Average spending
-average_spending = np.mean(df["Amount"])     # Calculate the average spending by taking the mean of the "Amount" column
-print("Average Spending: $", round(average_spending, 2))
+average_spending = df["Amount"].mean()      # Calculate the average spending by taking the mean of the "Amount" column
+print(f"Average Spending: ${average_spending:.2f}")
 
 # Highest expense
 highest_expense = df["Amount"].max()        # Find the highest expense by taking the maximum value from the "Amount" column
-print("Highest Expense: $", highest_expense)
+print(f"Highest Expense: ${highest_expense:.2f}")
 
 # Spending by category
 category_summary = df.groupby("Category")["Amount"].sum()       # Group the DataFrame by the "Category" column and sum the "Amount" for each category to get the total spending per category 
@@ -50,9 +50,9 @@ plt.show()
 category_totals = df.groupby('Category')['Amount'].sum()        # Group the DataFrame by the "Category" column and sum the "Amount" for each category to get the total spending per category
 
 plt.figure(figsize=(6,6))
-plt.pie(category_totals, labels=category_totals.index, autopct='%1.1f%%', startangle=140)    # Draws a pie chart with category_totals as slice sizes, category names as labels, percentages shown to one decimal place, and rotated to start at 140° for readability
+plt.pie(category_totals, labels=category_totals.index, autopct='%1.1f%%', startangle=140)       # Draws a pie chart with category_totals as slice sizes, category names as labels, percentages shown to one decimal place, and rotated to start at 140° for readability
 plt.title("Expense Breakdown by Category")
-plt.axis('equal')  # Equal aspect ratio ensures that the pie chart is circular
+plt.axis('equal')       # Equal aspect ratio ensures that the pie chart is circular
 plt.tight_layout()
 plt.show()
 
