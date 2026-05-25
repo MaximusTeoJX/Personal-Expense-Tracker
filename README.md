@@ -47,7 +47,7 @@ Run script: python analysis.py
 You can generate charts to better understand your spending patterns.
 
 ### 1. Expenses Over Time (Line Chart)
-
+```python
 plt.figure(figsize=(10,5))
 plt.plot(df['Date'], df['Amount'], marker='o', linestyle='-', color='blue')
 plt.title("Expenses Over Time")
@@ -56,9 +56,10 @@ plt.ylabel("Amount ($)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+```
 
 ### 2. Expenses Breakdown by Category (Pie Chart)
-
+```python
 category_totals = df.groupby('Category')['Amount'].sum()
 
 plt.figure(figsize=(6,6))
@@ -67,8 +68,10 @@ plt.title("Expense Breakdown by Category")
 plt.axis('equal')   # ensures the pie chart is circular
 plt.tight_layout()
 plt.show()
+```
 
 ### 3. Monthly Expenses (Bar Chart)
+```python
 df['Month'] = df['Date'].dt.to_period('M')
 monthly_totals = df.groupby('Month')['Amount'].sum()
 
@@ -80,3 +83,4 @@ plt.ylabel("Total Amount ($)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+```
